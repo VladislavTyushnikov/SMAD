@@ -3,7 +3,6 @@
 class RandomGenerator
 {
 public:
-	virtual float rand();
-	virtual float getMin();
-	virtual float getMax();
+	virtual const float rand() = 0;
+	virtual ~RandomGenerator() {};
 };
