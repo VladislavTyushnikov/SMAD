@@ -8,6 +8,6 @@ private:
 	float m_mu;
 public:
 	NormalDistributionGenerator(float sigma, float mu);
-	const float rand() override;
+	float rand() const override;
 	~NormalDistributionGenerator() override;
 };

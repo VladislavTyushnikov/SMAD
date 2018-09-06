@@ -19,18 +19,42 @@
     <Filter Include="smad\Random">
       <UniqueIdentifier>{469e1db3-7a79-4838-bb36-8a35a5d5c3e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="smad\DataGenerator">
+      <UniqueIdentifier>{ef47fe7d-d258-4c25-991c-3c144f0f4ea5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>smad</Filter>
     </ClCompile>
+    <ClCompile Include="NormalDistributionGenerator.cpp">
+      <Filter>smad\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelDataGenerator.cpp">
+      <Filter>smad\DataGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstRand.cpp">
+      <Filter>smad\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Variant2DataGenerator.cpp">
+      <Filter>smad\DataGenerator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataGenerator.h">
-      <Filter>smad</Filter>
-    </ClInclude>
     <ClInclude Include="RandomGenerator.h">
       <Filter>smad\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalDistributionGenerator.h">
+      <Filter>smad\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelDataGenerator.h">
+      <Filter>smad\DataGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstRand.h">
+      <Filter>smad\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Variant2DataGenerator.h">
+      <Filter>smad\DataGenerator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

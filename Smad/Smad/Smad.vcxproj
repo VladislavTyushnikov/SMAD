@@ -139,11 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConstRand.cpp" />
+    <ClCompile Include="ModelDataGenerator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NormalDistributionGenerator.cpp" />
+    <ClCompile Include="Variant2DataGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataGenerator.h" />
+    <ClInclude Include="ConstRand.h" />
+    <ClInclude Include="ModelDataGenerator.h" />
+    <ClInclude Include="NormalDistributionGenerator.h" />
     <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="Variant2DataGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,9 +7,9 @@ NormalDistributionGenerator::NormalDistributionGenerator(float sigma, float mu) 
 
 }
 
-const float NormalDistributionGenerator::rand()
+float NormalDistributionGenerator::rand() const
 {
-
+	return 0;
 }
 
 NormalDistributionGenerator::~NormalDistributionGenerator()
