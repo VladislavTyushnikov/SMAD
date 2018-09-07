@@ -105,6 +105,16 @@ def calcSigma2Dash(tetaDashVec, obsTable):
     sigma2 /= (n - m)
     return sigma2[0][0]
 
+def calcQuantile(sigma, sigmaDash):
+    print("F: " + str(sigmaDash/sigma))
+    if sigmaDash/sigma <= 1.28:
+        return "Модель адекватная"
+    else:
+        return "Модель неадекватная"
+
+
+
+
 
 sigma = np.sqrt(1.1)
 mu = 0
@@ -112,7 +122,7 @@ bordersX = [[-1, 1], [-1, 1]]
 tetaVec = [1, 3, 1 / 100, 1 / 3]
 observations = []
 
-observations = makeObservations(bordersX, [0.125, 0.125], tetaVec, sigma, mu)
+observations = makeObservations(bordersX, [0.225, 0.225], tetaVec, sigma, mu)
 for i in range(observations.__len__()):
     print(observations[i])
 print("Power: ", calcSignalPower(tetaVec))
@@ -122,3 +132,4 @@ print("TetaDash: ", tetaDashVec)
 sigma2Dash = calcSigma2Dash(tetaDashVec, observations)
 print("sigma2: ", sigma * sigma)
 print("sigma2Dash: ", sigma2Dash)
+print(calcQuantile(sigma*sigma, sigma2Dash))
