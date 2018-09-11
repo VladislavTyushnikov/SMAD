@@ -116,13 +116,13 @@ def calcQuantile(sigma, sigmaDash):
 
 
 
-sigma = np.sqrt(1.1)
+sigma = np.sqrt(1.1 * 0.1)
 mu = 0
 bordersX = [[-1, 1], [-1, 1]]
-tetaVec = [1, 3, 1 / 100, 1 / 3]
+tetaVec = [1, 3,1, 1 / 100, 1 / 3]
 observations = []
 
-observations = makeObservations(bordersX, [0.225, 0.225], tetaVec, sigma, mu)
+observations = makeObservations(bordersX, [0.5, 0.5], tetaVec, sigma, mu)
 for i in range(observations.__len__()):
     print(observations[i])
 print("Power: ", calcSignalPower(tetaVec))
