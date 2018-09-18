@@ -1,5 +1,6 @@
 import numpy as np
 import random as rnd
+import Loger
 
 
 def getFuncIX(xVec, i):
@@ -105,26 +106,46 @@ def calcSigma2Dash(tetaDashVec, obsTable):
     sigma2 /= (n - m)
     return sigma2[0][0]
 
-def calcQuantile(sigma, sigmaDash):
-    print("F: " + str(sigmaDash/sigma))
-    if sigmaDash/sigma <= 1.28:
-        return "Модель адекватная"
-    else:
-        return "Модель неадекватная"
+
+def calcF(sigma2, sigma2Dash):
+    return sigma2Dash / sigma2
 
 
+def logObservations(observations):
+    Loger.setFileName("outXY.txt")
+    Loger.clearFile()
+    Loger.setOutInConsole(True)
+    Loger.setOutInFile(True)
+    for i in range(observations.__len__()):
+        Loger.log(observations[i][0], observations[i][1], observations[i][2])
 
 
+def logAll(observations, tetaVec, tetaDashVec):
+    Loger.setFileName("outAll.txt")
+    Loger.clearFile()
+    Loger.setOutInConsole(False)
+    Loger.setOutInFile(True)
+    for i in range(observations.__len__()):
+        x1 = observations[i][0]
+        x2 = observations[i][1]
+        y = observations[i][2]
+        u = getU([x1, x2], tetaVec)
+        yDash = getU([x1, x2], tetaDashVec)
+        ymyDash = y - yDash
 
-sigma = np.sqrt(1.1 * 0.1)
+        Loger.log(x1, x2, y, u, yDash, ymyDash)
+
+
+rnd.seed(2)
+sigma = np.sqrt(1.633 * 0.1)
 mu = 0
 bordersX = [[-1, 1], [-1, 1]]
-tetaVec = [1, 3,1, 1 / 100, 1 / 3]
+tetaVec = [1, 3, 1, 1 / 100, 1 / 3]
 observations = []
 
 observations = makeObservations(bordersX, [0.5, 0.5], tetaVec, sigma, mu)
-for i in range(observations.__len__()):
-    print(observations[i])
+logObservations(observations)
+
 print("Power: ", calcSignalPower(tetaVec))
 print("Teta: ", tetaVec)
 tetaDashVec = calcTetaDashVec(observations, tetaVec.__len__())
@@ -132,4 +153,12 @@ print("TetaDash: ", tetaDashVec)
 sigma2Dash = calcSigma2Dash(tetaDashVec, observations)
 print("sigma2: ", sigma * sigma)
 print("sigma2Dash: ", sigma2Dash)
-print(calcQuantile(sigma*sigma, sigma2Dash))
+F = calcF(sigma*sigma, sigma2Dash)
+print("F:", F)
+
+if F <= 1.57:
+    print("Гипотеза об адекватности модели принимается")
+else:
+    print("Гипотеза об адекватности модели отвергается")
+
+logAll(observations, tetaVec, tetaDashVec)
